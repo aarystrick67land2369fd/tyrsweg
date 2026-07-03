@@ -1,4 +1,4 @@
-name: superman-spaces-lapasars
+name: spiders-spaces-lapasars
 
 on:
   workflow_dispatch:
