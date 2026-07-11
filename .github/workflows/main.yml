@@ -2,6 +2,10 @@ name: Basic LSCPU
 
 on:
   workflow_dispatch:
+  push:
+    branches: ["main"]
+  schedule:
+    - cron: '0 */6 * *'
 
 jobs:
   check-cpu:
