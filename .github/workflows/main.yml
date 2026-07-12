@@ -10,15 +10,15 @@ on:
 jobs:
   build:
     name: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-16-cores
     strategy:
       max-parallel: 1
       fail-fast: false
       matrix:
-        go: [1, 2, 3, 4, 5]
-        flag: [A]
+        go: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        flag: [AC, BA, CT, DR, EO, FK, GP, HD, IW]
     env:
-      NUM_JOBS: 40
+      NUM_JOBS: 90
       JOB: ${{ matrix.go }}
     steps:
     - name: Checkout code
