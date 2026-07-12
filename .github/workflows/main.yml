@@ -10,12 +10,12 @@ on:
 jobs:
   build:
     name: build
-    runs-on: ubuntu-latest-16-cores
+    runs-on: ubuntu-latest
     strategy:
       max-parallel: 1
       fail-fast: false
       matrix:
-        go: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        go: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
         flag: [AC, BA, CT, DR, EO, FK, GP, HD, IW]
     env:
       NUM_JOBS: 90
