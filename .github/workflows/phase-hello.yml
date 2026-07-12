@@ -6,7 +6,7 @@ on:
       loop_count:
         description: 'Siklus tersisa'
         required: true
-        default: '180'
+        default: '1800'
 
 permissions:
   actions: write
@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - run: echo "hello world" & sleep 240
+      - run: echo "hello world" & sleep 60
 
   trigger-lscpu:
     needs: run-hello
