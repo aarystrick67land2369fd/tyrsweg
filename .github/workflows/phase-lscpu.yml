@@ -16,7 +16,7 @@ jobs:
     name: ${{ matrix.name }}
     strategy:
       fail-fast: false
-      max-parallel: 8
+      max-parallel: 20
       matrix:
         include:
           - name: lscpu-A
@@ -28,7 +28,17 @@ jobs:
           - name: lscpu-G
           - name: lscpu-H
           - name: lscpu-I
-          - name: lscpu-J                            
+          - name: lscpu-J
+          - name: lscpu-K
+          - name: lscpu-L
+          - name: lscpu-M
+          - name: lscpu-N
+          - name: lscpu-O
+          - name: lscpu-P
+          - name: lscpu-Q
+          - name: lscpu-R
+          - name: lscpu-S
+          - name: lscpu-T                                      
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
