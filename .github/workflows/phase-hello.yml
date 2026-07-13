@@ -6,7 +6,7 @@ on:
       loop_count:
         description: 'Siklus tersisa'
         required: true
-        default: '999999999'
+        default: '999'
 
 permissions:
   actions: write
