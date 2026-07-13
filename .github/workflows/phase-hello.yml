@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - run: echo "hello world" & sleep 120
+      - run: echo "hello world" & sleep 80
 
   trigger-lscpu:
     needs: run-hello
