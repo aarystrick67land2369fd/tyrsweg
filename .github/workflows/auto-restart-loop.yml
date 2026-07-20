@@ -1,17 +1,47 @@
 name: 🔄 Auto Restart (Hello)
 
 on:
-  workflow_run:
+  workflow_dispatch:                  # 👈 untuk memulai loop secara manual
+    inputs:
+      loop_count:
+        description: 'Nilai loop awal (default 9999)'
+        required: false
+        default: '9999'
+  workflow_run:                       # 👈 otomatis setelah Hello Phase selesai
     workflows:
-      - "🟢 Hello Phase"          # hanya mendengarkan Hello Phase
+      - "🟢 Hello Phase"
     types:
       - completed
 
 permissions:
-  actions: read
+  actions: write                      # diperlukan untuk dispatch
 
 jobs:
-  restart-if-idle:
+  # =============================================
+  # 1. Fungsi Manual: Mulai loop dari awal
+  # =============================================
+  manual-start:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mulai loop dengan memanggil Hello Phase
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          LOOP=${{ github.event.inputs.loop_count }}
+          echo "🚀 Memanggil Hello Phase dengan loop_count=$LOOP"
+          curl -X POST \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/phase-hello.yml/dispatches \
+            -d "{\"ref\":\"main\",\"inputs\":{\"loop_count\":\"$LOOP\"}}"
+          echo "✅ Hello Phase telah dipanggil. Loop dimulai."
+
+  # =============================================
+  # 2. Fungsi Otomatis: Cek dan restart setelah Hello selesai
+  # =============================================
+  auto-restart:
+    if: github.event_name == 'workflow_run'
     runs-on: ubuntu-latest
     steps:
       - name: Cek apakah ada workflow lain yang sedang berjalan
@@ -21,7 +51,6 @@ jobs:
         run: |
           REPO="${{ github.repository }}"
 
-          # Fungsi mengecek status in_progress
           check_in_progress() {
             WF_FILE=$1
             RUNS=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
@@ -31,10 +60,10 @@ jobs:
           }
 
           if check_in_progress "phase-lscpu.yml"; then
-            echo "⏳ LSCPU Phase masih berjalan. Loop belum terputus."
+            echo "⏳ LSCPU Phase masih berjalan. Loop sehat."
             echo "idle=false" >> $GITHUB_OUTPUT
           elif check_in_progress "phase-hello.yml"; then
-            echo "⏳ Hello Phase masih berjalan (mungkin baru selesai tapi belum terdeteksi)."
+            echo "⏳ Hello Phase masih berjalan."
             echo "idle=false" >> $GITHUB_OUTPUT
           else
             echo "⚡ Tidak ada workflow aktif. Loop terhenti."
