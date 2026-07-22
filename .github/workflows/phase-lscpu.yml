@@ -51,10 +51,10 @@ jobs:
             SLEEP=10800
           else
             if [ "$LOOP" -ge 9990 ]; then
-              echo "🔄 5 loop pertama (loop_count >= 9990). Sleep 650 detik."
+              echo "🔄 hello world"
               SLEEP=650
             else
-              echo "⏳ Loop selanjutnya. Sleep 1 jam."
+              echo "⏳ hello world"
               SLEEP=3600
             fi
           fi
