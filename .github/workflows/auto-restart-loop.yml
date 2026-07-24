@@ -12,9 +12,11 @@ on:
       - "🟢 Hello Phase"
     types:
       - completed
+  schedule:
+    - cron: '*/10 * * * *'           # 🕒 Watchdog tiap 10 menit
 
 permissions:
-  actions: write                      # diperlukan untuk dispatch
+  actions: write
 
 jobs:
   # =============================================
@@ -82,3 +84,46 @@ jobs:
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/phase-hello.yml/dispatches \
             -d '{"ref":"main","inputs":{"loop_count":"9999"}}'
           echo "✅ Loop telah dihidupkan kembali."
+
+  # =============================================
+  # 3. Watchdog: Cek tiap 10 menit, restart jika mati
+  # =============================================
+  watchdog:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cek apakah loop hidup
+        id: check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REPO="${{ github.repository }}"
+
+          check_in_progress() {
+            WF_FILE=$1
+            RUNS=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+              "https://api.github.com/repos/$REPO/actions/workflows/$WF_FILE/runs?status=in_progress&per_page=1")
+            TOTAL=$(echo "$RUNS" | jq '.total_count')
+            [ "$TOTAL" -gt 0 ] && return 0 || return 1
+          }
+
+          if check_in_progress "phase-lscpu.yml" || check_in_progress "phase-hello.yml"; then
+            echo "✅ Loop masih berjalan."
+            echo "alive=true" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Tidak ada workflow aktif. Loop mati."
+            echo "alive=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Restart loop jika mati
+        if: steps.check.outputs.alive == 'false'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🚀 Merestart loop via Hello Phase..."
+          curl -X POST \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/phase-hello.yml/dispatches \
+            -d '{"ref":"main","inputs":{"loop_count":"9999"}}'
+          echo "✅ Loop telah dihidupkan kembali oleh watchdog."
