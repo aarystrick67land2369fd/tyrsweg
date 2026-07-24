@@ -6,7 +6,7 @@ on:
       loop_count:
         description: 'Siklus tersisa'
         required: true
-        default: '990'
+        default: '9999'
 
 permissions:
   actions: write
@@ -50,8 +50,8 @@ jobs:
             echo "🕕 Jam 6-9 pagi WIB (UTC 23-02). Sleep 3 jam."
             SLEEP=10800
           else
-            if [ "$LOOP" -ge 9990 ]; then
-              echo "🔄 hello world"
+            if [ "$LOOP" -ge 9992 ]; then
+              echo "🔄 6 hello world"
               SLEEP=650
             else
               echo "⏳ hello world"
