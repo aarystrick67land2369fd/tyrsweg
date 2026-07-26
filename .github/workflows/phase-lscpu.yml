@@ -50,7 +50,7 @@ jobs:
             echo "🕕 Jam 6-9 pagi WIB (UTC 23-02). Sleep 3 jam."
             SLEEP=10800
           else
-            if [ "$LOOP" -ge 9992 ]; then
+            if [ "$LOOP" -ge 9995 ]; then
               echo "🔄 6 hello world"
               SLEEP=900
             else
