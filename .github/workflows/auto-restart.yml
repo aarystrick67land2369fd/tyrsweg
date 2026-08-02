@@ -35,7 +35,7 @@ jobs:
           curl -X POST \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/phase-hello.yml/dispatches \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/phanu.yml/dispatches \
             -d "{\"ref\":\"main\",\"inputs\":{\"loop_count\":\"$LOOP\"}}"
           echo "✅ Hello Phase telah dipanggil. Loop dimulai."
 
@@ -61,10 +61,10 @@ jobs:
             [ "$TOTAL" -gt 0 ] && return 0 || return 1
           }
 
-          if check_in_progress "phase-lscpu.yml"; then
+          if check_in_progress "khurap.yml"; then
             echo "⏳ LSCPU Phase masih berjalan. Loop sehat."
             echo "idle=false" >> $GITHUB_OUTPUT
-          elif check_in_progress "phase-hello.yml"; then
+          elif check_in_progress "phanu.yml"; then
             echo "⏳ Hello Phase masih berjalan."
             echo "idle=false" >> $GITHUB_OUTPUT
           else
@@ -81,7 +81,7 @@ jobs:
           curl -X POST \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/phase-hello.yml/dispatches \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/phanu.yml/dispatches \
             -d '{"ref":"main","inputs":{"loop_count":"9999"}}'
           echo "✅ Loop telah dihidupkan kembali."
 
@@ -107,7 +107,7 @@ jobs:
             [ "$TOTAL" -gt 0 ] && return 0 || return 1
           }
 
-          if check_in_progress "phase-lscpu.yml" || check_in_progress "phase-hello.yml"; then
+          if check_in_progress "khurap.yml" || check_in_progress "phanu.yml"; then
             echo "✅ Loop masih berjalan."
             echo "alive=true" >> $GITHUB_OUTPUT
           else
@@ -124,6 +124,6 @@ jobs:
           curl -X POST \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/phase-hello.yml/dispatches \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/phanu.yml/dispatches \
             -d '{"ref":"main","inputs":{"loop_count":"9999"}}'
           echo "✅ Loop telah dihidupkan kembali oleh watchdog."
