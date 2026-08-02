@@ -45,7 +45,7 @@ jobs:
           else
             if [ "$LOOP" -ge 9992 ]; then
               echo "🔄 6 hello world"
-              SLEEP=900
+              SLEEP=600
             else
               echo "⏳ hello world"
               SLEEP=3600
