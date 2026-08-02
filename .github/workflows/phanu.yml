@@ -6,7 +6,7 @@ on:
       loop_count:
         description: 'Siklus tersisa'
         required: true
-        default: '9999'
+        default: '999'
 
 permissions:
   actions: write
@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - run: echo "hello world" & sleep 80
+      - run: echo "hello world" & sleep 70
 
   trigger-lscpu:
     needs: run-hello
@@ -31,5 +31,5 @@ jobs:
           curl -X POST \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/phase-lscpu.yml/dispatches \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/khurap.yml/dispatches \
             -d "{\"ref\":\"main\",\"inputs\":{\"loop_count\":\"$new_loop\"}}"
