@@ -46,12 +46,15 @@ jobs:
         run: |
           HOUR_UTC=$(date -u +%H)
           LOOP=${{ github.event.inputs.loop_count }}
-          if [ "$HOUR_UTC" -ge 23 ] || [ "$HOUR_UTC" -lt 3 ]; then
-            echo "🕕 Jam 6-9 pagi WIB (UTC 23-02). Sleep 3 jam."
-            SLEEP=10800
+          if [ "$HOUR_UTC" -eq 4 ]; then
+          echo "🕚 hello world"
+          SLEEP=18000
+          elif [ "$HOUR_UTC" -ge 23 ] || [ "$HOUR_UTC" -lt 3 ]; then
+          echo "🕕 hello world"
+          SLEEP=10800
           else
             if [ "$LOOP" -ge 9980 ]; then
-              echo "🔄 6 hello world"
+              echo "🔄 hello world"
               SLEEP=600
             else
               echo "⏳ hello world"
