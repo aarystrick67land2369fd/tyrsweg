@@ -1,4 +1,4 @@
-name: 🔄 Auto Hello
+name: 🔄 Auto Phanu
 
 on:
   workflow_dispatch:
@@ -12,8 +12,6 @@ on:
       - "🟢 phanu"
     types:
       - completed
-  schedule:
-    - cron: '*/10 * * * *'
 
 permissions:
   actions: write
@@ -23,16 +21,18 @@ jobs:
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
-      - name: Mulai loop dengan phanu (next = khirap)
+      - name: Mulai loop dengan phanu
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           LOOP=${{ github.event.inputs.loop_count }}
+          echo "🚀 Memanggil phanu dengan loop_count=$LOOP"
           curl -X POST \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/phanu.yml/dispatches \
-            -d "{\"ref\":\"main\",\"inputs\":{\"loop_count\":\"$LOOP\",\"next_phase\":\"khirap\"}}"
+            -d "{\"ref\":\"main\",\"inputs\":{\"loop_count\":\"$LOOP\"}}"
+          echo "✅ phanu telah dipanggil."
 
   auto-restart:
     if: github.event_name == 'workflow_run'
@@ -44,6 +44,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           REPO="${{ github.repository }}"
+
           check_in_progress() {
             WF_FILE=$1
             RUNS=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
@@ -51,51 +52,24 @@ jobs:
             TOTAL=$(echo "$RUNS" | jq '.total_count')
             [ "$TOTAL" -gt 0 ] && return 0 || return 1
           }
+
           if check_in_progress "khurap.yml" || check_in_progress "khirap.yml" || check_in_progress "phanu.yml"; then
+            echo "⏳ Loop masih berjalan."
             echo "idle=false" >> $GITHUB_OUTPUT
           else
+            echo "⚡ Tidak ada workflow aktif. Loop terhenti."
             echo "idle=true" >> $GITHUB_OUTPUT
           fi
-      - name: Restart via phanu
+
+      - name: Mulai ulang loop via phanu
         if: steps.check.outputs.idle == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          echo "🚀 Memulai ulang phanu..."
           curl -X POST \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/phanu.yml/dispatches \
-            -d '{"ref":"main","inputs":{"loop_count":"9999","next_phase":"khirap"}}'
-
-  watchdog:
-    if: github.event_name == 'schedule'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cek apakah loop hidup
-        id: check
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          REPO="${{ github.repository }}"
-          check_in_progress() {
-            WF_FILE=$1
-            RUNS=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-              "https://api.github.com/repos/$REPO/actions/workflows/$WF_FILE/runs?status=in_progress&per_page=1")
-            TOTAL=$(echo "$RUNS" | jq '.total_count')
-            [ "$TOTAL" -gt 0 ] && return 0 || return 1
-          }
-          if check_in_progress "khurap.yml" || check_in_progress "khirap.yml" || check_in_progress "phanu.yml"; then
-            echo "alive=true" >> $GITHUB_OUTPUT
-          else
-            echo "alive=false" >> $GITHUB_OUTPUT
-          fi
-      - name: Restart jika mati
-        if: steps.check.outputs.alive == 'false'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          curl -X POST \
-            -H "Authorization: token $GITHUB_TOKEN" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/phanu.yml/dispatches \
-            -d '{"ref":"main","inputs":{"loop_count":"999","next_phase":"khirap"}}'
+            -d '{"ref":"main","inputs":{"loop_count":"999"}}'
+          echo "✅ Loop telah dihidupkan kembali."
