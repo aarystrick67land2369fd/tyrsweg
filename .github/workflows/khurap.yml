@@ -46,18 +46,31 @@ jobs:
         run: |
           HOUR_UTC=$(date -u +%H)
           LOOP=${{ github.event.inputs.loop_count }}
-          if [ "$HOUR_UTC" -eq 4 ]; then
-            echo "🕚 HELLO WORLD"
-            SLEEP=18000
-          elif [ "$HOUR_UTC" -ge 23 ] || [ "$HOUR_UTC" -lt 3 ]; then
-            echo "🕕 HELLO WORLD"
-            SLEEP=10800
+          # Hitung siklus penuh yang sudah selesai (awal 9999, tiap siklus turun 3)
+          COMPLETED=$(( (9999 - LOOP) / 3 ))
+          if [ "$COMPLETED" -ge 3 ]; then
+            if [ "$HOUR_UTC" -eq 4 ]; then
+              echo "🕚 HELLO WORLD"
+              SLEEP=18000
+            elif [ "$HOUR_UTC" -ge 23 ] || [ "$HOUR_UTC" -lt 3 ]; then
+              echo "🕕 HELLO WORLD"
+              SLEEP=10800
+            else
+              if [ "$LOOP" -ge 9992 ]; then
+                echo "🔄 6 hello world"
+                SLEEP=600
+              else
+                echo "⏳ hello world"
+                SLEEP=3600
+              fi
+            fi
           else
+            # Sebelum 3 siklus, aturan biasa
             if [ "$LOOP" -ge 9992 ]; then
-              echo "🔄 hello world"
+              echo "🔄 Awal loop, sleep pendek"
               SLEEP=600
             else
-              echo "⏳ hello world"
+              echo "⏳ Loop lanjutan, sleep 1 jam"
               SLEEP=3600
             fi
           fi
