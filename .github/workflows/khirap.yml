@@ -16,19 +16,29 @@ jobs:
     name: ${{ matrix.name }}
     strategy:
       fail-fast: false
-      max-parallel: 10
+      max-parallel: 20
       matrix:
         include:
-          - name: khi-a1
-          - name: khi-b1
-          - name: khi-c1
-          - name: khi-d1
-          - name: khi-e1
-          - name: khi-f1
-          - name: khi-g1
-          - name: khi-h1
-          - name: khi-i1
-          - name: khi-j1
+          - name: khia-a1
+          - name: khia-b1
+          - name: khia-c1
+          - name: khia-d1
+          - name: khia-e1
+          - name: khia-f1
+          - name: khia-g1
+          - name: khia-h1
+          - name: khia-i1
+          - name: khia-j1
+          - name: khi-aa1
+          - name: khi-ba1
+          - name: khi-ca1
+          - name: khi-da1
+          - name: khi-ea1
+          - name: khi-fa1
+          - name: khi-ag1
+          - name: khi-ha1
+          - name: khi-ia1
+          - name: khi-ja1          
     runs-on: ubuntu-latest
     timeout-minutes: 310
     steps:
