@@ -6,7 +6,7 @@ on:
       loop_count:
         description: 'Siklus tersisa'
         required: true
-        default: '999'
+        default: '9999'
       next_phase:
         description: 'Workflow selanjutnya (khirap atau khurap)'
         required: true
