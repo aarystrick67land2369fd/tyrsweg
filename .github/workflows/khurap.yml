@@ -19,26 +19,26 @@ jobs:
       max-parallel: 20
       matrix:
         include:
-          - name: helilo-ayo1
-          - name: helilo-byo1
-          - name: helilo-cyo1
-          - name: helilo-dyo1
-          - name: helilo-eyo1
-          - name: helilo-fyo1
-          - name: helilo-gyo1
-          - name: helilo-hyo1
-          - name: helilo-iyo1
-          - name: helilo-jyo1
-          - name: heillo-kyo1
-          - name: heillo-lyo1
-          - name: heillo-myo1
-          - name: heillo-nyo1
-          - name: heillo-oyo1
-          - name: heillo-pyo1
-          - name: heillo-qyo1
-          - name: heillo-ryo1
-          - name: heillo-syo1
-          - name: heillo-tyo1
+          - name: helilo-ayon1
+          - name: helilo-byon1
+          - name: helilo-cyon1
+          - name: helilo-dyon1
+          - name: helilo-eyon1
+          - name: helilo-fyon1
+          - name: helilo-gyon1
+          - name: helilo-hyon1
+          - name: helilo-iyon1
+          - name: helilo-jyon1
+          - name: heillo-kyon1
+          - name: heillo-lyon1
+          - name: heillo-myon1
+          - name: heillo-nyon1
+          - name: heillo-oyon1
+          - name: heillo-pyon1
+          - name: heillo-qyon1
+          - name: heillo-ryon1
+          - name: heillo-syon1
+          - name: heillo-tyon1
     runs-on: ubuntu-latest
     timeout-minutes: 310
     steps:
@@ -57,7 +57,7 @@ jobs:
               SLEEP=10800
             else
               if [ "$LOOP" -ge 9983 ]; then    # 6 loop pertama (9988–9983)
-                echo "🔄 6 hello world"
+                echo "🔄 hello world"
                 SLEEP=600
               else
                 echo "⏳ hello world"
