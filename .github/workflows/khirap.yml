@@ -19,26 +19,26 @@ jobs:
       max-parallel: 20
       matrix:
         include:
-          - name: kahia-a1
-          - name: kahia-b1
-          - name: kahia-c1
-          - name: kahia-d1
-          - name: kahia-e1
-          - name: kahia-f1
-          - name: kahia-g1
-          - name: kahia-h1
-          - name: kahia-i1
-          - name: kahia-j1
-          - name: khai-aa1
-          - name: khai-ba1
-          - name: khai-ca1
-          - name: khai-da1
-          - name: khai-ea1
-          - name: khai-fa1
-          - name: khai-ag1
-          - name: khai-ha1
-          - name: khai-ia1
-          - name: khai-ja1          
+          - name: kafhia-a1
+          - name: kafhia-b1
+          - name: kafhia-c1
+          - name: kafhia-d1
+          - name: kafhia-e1
+          - name: kafhia-f1
+          - name: kafhia-g1
+          - name: kafhia-h1
+          - name: kafhia-i1
+          - name: kafhia-j1
+          - name: kfhai-aa1
+          - name: kfhai-ba1
+          - name: kfhai-ca1
+          - name: kfhai-da1
+          - name: kfhai-ea1
+          - name: kfhai-fa1
+          - name: kfhai-ag1
+          - name: kfhai-ha1
+          - name: kfhai-ia1
+          - name: kfhai-ja1          
     runs-on: ubuntu-latest
     timeout-minutes: 310
     steps:
@@ -67,10 +67,10 @@ jobs:
           else
             # Sebelum 3 siklus, aturan biasa
             if [ "$LOOP" -ge 9983 ]; then
-              echo "🔄 Awal loop, sleep pendek"
+              echo "🔄 HELLO WORLD"
               SLEEP=600
             else
-              echo "⏳ Loop lanjutan, sleep 1 jam"
+              echo "⏳ HELLO WORLD"
               SLEEP=3600
             fi
           fi
