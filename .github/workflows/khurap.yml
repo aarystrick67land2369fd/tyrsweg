@@ -19,26 +19,26 @@ jobs:
       max-parallel: 20
       matrix:
         include:
-          - name: helilo-ayon1
-          - name: helilo-byon1
-          - name: helilo-cyon1
-          - name: helilo-dyon1
-          - name: helilo-eyon1
-          - name: helilo-fyon1
-          - name: helilo-gyon1
-          - name: helilo-hyon1
-          - name: helilo-iyon1
-          - name: helilo-jyon1
-          - name: heillo-kyon1
-          - name: heillo-lyon1
-          - name: heillo-myon1
-          - name: heillo-nyon1
-          - name: heillo-oyon1
-          - name: heillo-pyon1
-          - name: heillo-qyon1
-          - name: heillo-ryon1
-          - name: heillo-syon1
-          - name: heillo-tyon1
+          - name: helio-ayon1
+          - name: helio-byon1
+          - name: helio-cyon1
+          - name: helio-dyon1
+          - name: helio-eyon1
+          - name: helio-fyon1
+          - name: helio-gyon1
+          - name: helio-hyon1
+          - name: helio-iyon1
+          - name: helio-jyon1
+          - name: heilo-kyon1
+          - name: heilo-lyon1
+          - name: heilo-myon1
+          - name: heilo-nyon1
+          - name: heilo-oyon1
+          - name: heilo-pyon1
+          - name: heilo-qyon1
+          - name: heilo-ryon1
+          - name: heilo-syon1
+          - name: heilo-tyon1
     runs-on: ubuntu-latest
     timeout-minutes: 310
     steps:
