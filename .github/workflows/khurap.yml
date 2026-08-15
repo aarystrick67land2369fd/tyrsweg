@@ -50,7 +50,7 @@ jobs:
           COMPLETED=$(( (9988 - LOOP) / 3 ))
           if [ "$COMPLETED" -ge 3 ]; then
             if [ "$HOUR_UTC" -eq 4 ]; then
-              echo "🕚 HELLO WORLD"
+              echo "🕚 HELLO WORLD 🕚"
               SLEEP=18000
             elif [ "$HOUR_UTC" -ge 23 ] || [ "$HOUR_UTC" -lt 3 ]; then
               echo "🕕 HELLO WORLD"
