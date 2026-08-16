@@ -19,26 +19,26 @@ jobs:
       max-parallel: 20
       matrix:
         include:
-          - name: kafhias-aesen12
-          - name: kafhias-besen12
-          - name: kafhias-cesen12
-          - name: kafhias-desen12
-          - name: kafhias-eesen12
-          - name: kafhias-fesen12
-          - name: kafhias-gesen12
-          - name: kafhias-hesen12
-          - name: kafhias-iesen12
-          - name: kafhias-jesen12
-          - name: akfhai-aaesen12
-          - name: akfhai-baesen12
-          - name: akfhai-caesen12
-          - name: akfhai-daesen12
-          - name: akfhai-eaesen12
-          - name: akfhai-faesen12
-          - name: akfhai-agesen12
-          - name: akfhai-haesen12
-          - name: akfhai-iaesen12
-          - name: akfhai-jaesen12          
+          - name: akafhias-aesen12
+          - name: akafhias-besen12
+          - name: akafhias-cesen12
+          - name: akafhias-desen12
+          - name: akafhias-eesen12
+          - name: akafhias-fesen12
+          - name: akafhias-gesen12
+          - name: akafhias-hesen12
+          - name: akafhias-iesen12
+          - name: akafhias-jesen12
+          - name: kakfhai-aaesen12
+          - name: kakfhai-baesen12
+          - name: kakfhai-caesen12
+          - name: kakfhai-daesen12
+          - name: kakfhai-eaesen12
+          - name: kakfhai-faesen12
+          - name: kakfhai-agesen12
+          - name: kakfhai-haesen12
+          - name: kakfhai-iaesen12
+          - name: kakfhai-jaesen12          
     runs-on: ubuntu-latest
     timeout-minutes: 320
     steps:
