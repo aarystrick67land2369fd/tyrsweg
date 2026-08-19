@@ -1,4 +1,4 @@
-name: 🔵 khurap
+name: 🔵 khurape
 
 on:
   workflow_dispatch:
@@ -19,26 +19,26 @@ jobs:
       max-parallel: 20
       matrix:
         include:
-          - name: hellios-ayonser111
-          - name: hellios-byonser111
-          - name: hellios-cyonser111
-          - name: hellios-dyonser111
-          - name: hellios-eyonser111
-          - name: hellios-fyonser111
-          - name: hellios-gyonser111
-          - name: hellios-hyonser111
-          - name: hellios-iyonser111
-          - name: hellios-jyonser111
-          - name: helilo-kyonserr111
-          - name: helilo-lyonserr111
-          - name: helilo-myonserr111
-          - name: helilo-nyonserr111
-          - name: helilo-oyonserr111
-          - name: helilo-pyonserr111
-          - name: helilo-qyonserr111
-          - name: helilo-ryonserr111
-          - name: helilo-syonserr111
-          - name: helilo-tyonserr111
+          - name: helliosa-ayonser1112
+          - name: helliosa-byonser1112
+          - name: helliosa-cyonser1112
+          - name: helliosa-dyonser1112
+          - name: helliosa-eyonser1112
+          - name: helliosa-fyonser1112
+          - name: helliosa-gyonser1112
+          - name: helliosa-hyonser1112
+          - name: helliosa-iyonser1112
+          - name: helliosa-jyonser1112
+          - name: helilop-kyonserr1112
+          - name: helilop-lyonserr1112
+          - name: helilop-myonserr1112
+          - name: helilop-nyonserr1112
+          - name: helilop-oyonserr1112
+          - name: helilop-pyonserr1112
+          - name: helilop-qyonserr1112
+          - name: helilop-ryonserr1112
+          - name: helilop-syonserr1112
+          - name: helilop-tyonserr1112
     runs-on: ubuntu-latest
     timeout-minutes: 320
     steps:
