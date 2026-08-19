@@ -1,4 +1,4 @@
-name: 🟣 khirap
+name: 🟣 khirape
 
 on:
   workflow_dispatch:
@@ -19,26 +19,26 @@ jobs:
       max-parallel: 20
       matrix:
         include:
-          - name: akafhias-aesen12
-          - name: akafhias-besen12
-          - name: akafhias-cesen12
-          - name: akafhias-desen12
-          - name: akafhias-eesen12
-          - name: akafhias-fesen12
-          - name: akafhias-gesen12
-          - name: akafhias-hesen12
-          - name: akafhias-iesen12
-          - name: akafhias-jesen12
-          - name: kakfhai-aaesen12
-          - name: kakfhai-baesen12
-          - name: kakfhai-caesen12
-          - name: kakfhai-daesen12
-          - name: kakfhai-eaesen12
-          - name: kakfhai-faesen12
-          - name: kakfhai-agesen12
-          - name: kakfhai-haesen12
-          - name: kakfhai-iaesen12
-          - name: kakfhai-jaesen12          
+          - name: sakafhias-aesen12
+          - name: sakafhias-besen12
+          - name: sakafhias-cesen12
+          - name: sakafhias-desen12
+          - name: sakafhias-eesen12
+          - name: sakafhias-fesen12
+          - name: sakafhias-gesen12
+          - name: sakafhias-hesen12
+          - name: sakafhias-iesen12
+          - name: sakafhias-jesen12
+          - name: kakfhair-aaesen12
+          - name: kakfhair-baesen12
+          - name: kakfhair-caesen12
+          - name: kakfhair-daesen12
+          - name: kakfhair-eaesen12
+          - name: kakfhair-faesen12
+          - name: kakfhair-agesen12
+          - name: kakfhair-haesen12
+          - name: kakfhair-iaesen12
+          - name: kakfhair-jaesen12          
     runs-on: ubuntu-latest
     timeout-minutes: 320
     steps:
