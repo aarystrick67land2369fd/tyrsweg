@@ -19,26 +19,26 @@ jobs:
       max-parallel: 20
       matrix:
         include:
-          - name: helliosa-ayonser1112
-          - name: helliosa-byonser1112
-          - name: helliosa-cyonser1112
-          - name: helliosa-dyonser1112
-          - name: helliosa-eyonser1112
-          - name: helliosa-fyonser1112
-          - name: helliosa-gyonser1112
-          - name: helliosa-hyonser1112
-          - name: helliosa-iyonser1112
-          - name: helliosa-jyonser1112
-          - name: helilop-kyonserr1112
-          - name: helilop-lyonserr1112
-          - name: helilop-myonserr1112
-          - name: helilop-nyonserr1112
-          - name: helilop-oyonserr1112
-          - name: helilop-pyonserr1112
-          - name: helilop-qyonserr1112
-          - name: helilop-ryonserr1112
-          - name: helilop-syonserr1112
-          - name: helilop-tyonserr1112
+          - name: helliosan-ayonser1112a
+          - name: helliosan-byonser1112b
+          - name: helliosan-cyonser1112c
+          - name: helliosan-dyonser1112d
+          - name: helliosan-eyonser1112e
+          - name: helliosan-fyonser1112f
+          - name: helliosan-gyonser1112g
+          - name: helliosan-hyonser1112h
+          - name: helliosan-iyonser1112i
+          - name: helliosan-jyonser1112j
+          - name: helilop-kyonserer1112k
+          - name: helilop-lyonserer1112l
+          - name: helilop-myonserer1112m
+          - name: helilop-nyonserer1112n
+          - name: helilop-oyonserer1112o
+          - name: helilop-pyonserer1112p
+          - name: helilop-qyonserer1112q
+          - name: helilop-ryonserer1112r
+          - name: helilop-syonserer1112s
+          - name: helilop-tyonserer1112t
     runs-on: ubuntu-latest
     timeout-minutes: 320
     steps:
