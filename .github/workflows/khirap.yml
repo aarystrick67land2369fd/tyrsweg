@@ -19,26 +19,26 @@ jobs:
       max-parallel: 20
       matrix:
         include:
-          - name: sakafhias-aesen12
-          - name: sakafhias-besen12
-          - name: sakafhias-cesen12
-          - name: sakafhias-desen12
-          - name: sakafhias-eesen12
-          - name: sakafhias-fesen12
-          - name: sakafhias-gesen12
-          - name: sakafhias-hesen12
-          - name: sakafhias-iesen12
-          - name: sakafhias-jesen12
-          - name: kakfhair-aaesen12
-          - name: kakfhair-baesen12
-          - name: kakfhair-caesen12
-          - name: kakfhair-daesen12
-          - name: kakfhair-eaesen12
-          - name: kakfhair-faesen12
-          - name: kakfhair-agesen12
-          - name: kakfhair-haesen12
-          - name: kakfhair-iaesen12
-          - name: kakfhair-jaesen12          
+          - name: sakafhias-aesene12a
+          - name: sakafhias-besene12b
+          - name: sakafhias-cesene12c
+          - name: sakafhias-desene12d
+          - name: sakafhias-eesene12e
+          - name: sakafhias-fesene12f
+          - name: sakafhias-gesene12g
+          - name: sakafhias-hesene12h
+          - name: sakafhias-iesene12i
+          - name: sakafhias-jesene12j
+          - name: kakfhair-aaesene12k
+          - name: kakfhair-baesene12l
+          - name: kakfhair-caesene12m
+          - name: kakfhair-daesene12n
+          - name: kakfhair-eaesene12o
+          - name: kakfhair-faesene12p
+          - name: kakfhair-agesene12q
+          - name: kakfhair-haesene12r
+          - name: kakfhair-iaesene12s
+          - name: kakfhair-jaesene12t          
     runs-on: ubuntu-latest
     timeout-minutes: 320
     steps:
