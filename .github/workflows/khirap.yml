@@ -19,26 +19,26 @@ jobs:
       max-parallel: 20
       matrix:
         include:
-          - name: sakafhias-aesene12a
-          - name: sakafhias-besene12b
-          - name: sakafhias-cesene12c
-          - name: sakafhias-desene12d
-          - name: sakafhias-eesene12e
-          - name: sakafhias-fesene12f
-          - name: sakafhias-gesene12g
-          - name: sakafhias-hesene12h
-          - name: sakafhias-iesene12i
-          - name: sakafhias-jesene12j
-          - name: kakfhair-aaesene12k
-          - name: kakfhair-baesene12l
-          - name: kakfhair-caesene12m
-          - name: kakfhair-daesene12n
-          - name: kakfhair-eaesene12o
-          - name: kakfhair-faesene12p
-          - name: kakfhair-agesene12q
-          - name: kakfhair-haesene12r
-          - name: kakfhair-iaesene12s
-          - name: kakfhair-jaesene12t          
+          - name: asakafhias-aesene12a
+          - name: asakafhias-besene12b
+          - name: asakafhias-cesene12c
+          - name: asakafhias-desene12d
+          - name: asakafhias-eesene12e
+          - name: asakafhias-fesene12f
+          - name: asakafhias-gesene12g
+          - name: asakafhias-hesene12h
+          - name: asakafhias-iesene12i
+          - name: asakafhias-jesene12j
+          - name: okakfhair-aaesene12k
+          - name: okakfhair-baesene12l
+          - name: okakfhair-caesene12m
+          - name: okakfhair-daesene12n
+          - name: okakfhair-eaesene12o
+          - name: okakfhair-faesene12p
+          - name: okakfhair-agesene12q
+          - name: okakfhair-haesene12r
+          - name: okakfhair-iaesene12s
+          - name: okakfhair-jaesene12t          
     runs-on: ubuntu-latest
     timeout-minutes: 320
     steps:
@@ -57,8 +57,8 @@ jobs:
               SLEEP=10800
             else
               if [ "$LOOP" -ge 9983 ]; then    # 6 loop pertama (9988–9983)
-                echo "🔄 hello world"
-                SLEEP=600
+                echo "🔄 HELLO WORLD"
+                SLEEP=580
               else
                 echo "⏳ hello world"
                 SLEEP=3600
